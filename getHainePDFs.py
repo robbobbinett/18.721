@@ -10,6 +10,6 @@ for _, _, files in os.walk(rootdir+'/haine_images'):
 figtext1 = '\\begin{figure}[H]\n\\centering\n\\includegraphics{'
 figtext2 = '}\n\\caption{This is a nice caption.}\n\\end{figure}\n'
 
-with open('temp.tex', 'a') as f:
+with open('compile/temp.tex', 'a') as f:
 	for file in image_names:
 		f.write(figtext1+file+figtext2)
