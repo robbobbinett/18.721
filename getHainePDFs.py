@@ -1,10 +1,12 @@
 import os
 rootdir = os.getcwd()
 
+verbotten = ['Ellipse', 'Plot ge']
+
 image_names = []
 for root, _, files in os.walk(rootdir+'/haine_images'):
 	for file in files:
-		if file[::-1][0:3][::-1] == 'pdf' and file[0:7] != 'Ellipse':
+		if file[::-1][0:3][::-1] == 'pdf' and file[0:7] not in verbotten':
 			image_names.append(root+'/'+file)
 
 figtext1 = '\\begin{figure}[H]\n\\centering\n\\includegraphics{'
