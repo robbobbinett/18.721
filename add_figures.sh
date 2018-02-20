@@ -1,3 +1,3 @@
 rm -f temp.tex
-cp chap1v65.tex temp.tex
+cp ch1edit.tex temp.tex
 python3 getHainePDFs.py
