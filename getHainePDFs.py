@@ -9,7 +9,7 @@ for root, _, files in os.walk(rootdir+'/haine_images'):
 		if file[::-1][0:3][::-1] == 'pdf' and file[0:7] not in verboten:
 			image_names.append(root+'/'+file[:-4])
 
-figtext1 = '\\begin{figure}[H]\n\\centering\n\\includegraphics[width=8.0cm]{"'
+figtext1 = '\\begin{figure}[H]\n\\centering\n\\includegraphics{"'
 figtext2 = '".pdf}\n\\caption{This is a nice caption.}\n\\end{figure}\n\n'
 
 with open('temp.tex', 'a') as f:
