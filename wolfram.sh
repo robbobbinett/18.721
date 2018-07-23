@@ -1,4 +1,3 @@
-rm -f images/Wolfram/*.png
+rm -f images/Wolfram/*.pdf
 
 ./images/Wolfram/wolfram_figures.m
-mv *.png images/Wolfram/
