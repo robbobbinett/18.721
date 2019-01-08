@@ -30,6 +30,12 @@ eqn[x_,y_,z_]:=((x^2+y^2)^2-x^2+y^2)^2+15z^2 - 1/100;
 Export["images/Wolfram/double_torus.pdf", ContourPlot3D[eqn[x,y,z]==0, {x,-1.2,1.2}, {y,-1,1}, {z,-0.2,0.2},Mesh->None,ContourStyle ->Directive[RGBColor[0.8,0.8,0.8]],Axes->False,MaxRecursion->15,BoxStyle->Directive[Opacity[0]],Lighting->{{"Directional", White, {0, 0, 3}}},ImageSize->Large]]
 Clear[eqn]
 
+(*ruled_hyperboloid---old*)
+surf1[a_,c_][u_,v_]:={a Sqrt[1+u^2]Cos[v],a Sqrt[1+u^2]Sin[v],c u};
+surf2[a_,c_][u_,v_]:={a Sinh[u]Cos[v],a Sinh[u]Sin[v],c u/Sqrt[u^2]Cosh[u]};
+Export["images/Wolfram/ruled_hyperboloid.pdf", GraphicsRow[ParametricPlot3D[#[1,1][u,v],{u,-2,2},{v,0,2\[Pi]},Boxed->False,Axes->False,ColorFunction->Function[{x,y,z},1],PlotStyle->FaceForm[None]]&/@{surf1,surf2},ImageSize->400,Spacings->-50]]
+Clear[surf1, surf2]
+
 (*ruled_hyperboloid*)
 surf1[a_,c_][u_,v_]:={a Sqrt[1+u^2]Cos[v],a Sqrt[1+u^2]Sin[v],c u};
 surf2[a_,c_][u_,v_]:={a Sinh[u]Cos[v],a Sinh[u]Sin[v],c u/Sqrt[u^2]Cosh[u]};
