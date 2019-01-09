@@ -15,6 +15,7 @@ with open('read_del.txt', 'r') as f:
 	pdfinfo = f.read()
 os.remove('read_del.txt')
 
+from numpy import floor
 image_size = []
 bash_template = "pdfinfo REPLACE.pdf > read_del.txt"
 for name in image_names:
@@ -29,7 +30,9 @@ for name in image_names:
 		text_cut = text_cut.replace('pts', '')
 		text_cut = text_cut.replace('(letter)', '')
 		if not '\n' in text_cut:
-			image_size.append((name, text_cut.split('x'))
+			cut = text_cut.split('x')
+			if cut != ['']:
+				image_size.append((name, [str(int(float(num))) for num in cut]))
 	os.remove('read_del.txt')
 
 figtext1 = '\\begin{figure}[H]\n\\centering\n\\begin{examples}{}\n\\label{goober'
@@ -41,5 +44,6 @@ figtext6 = '.pdf} \\\\\nThis is a nice caption.\n\\end{figure}\n\n'
 
 with open('temp.tex', 'a') as f:
 	for j, image in enumerate(image_size):
-		f.write(figtext1+str(j)+figtext2+str(j)+figtext3+image[1][0]+figtext4+image[1][1]+figtext5+image[0]+figtext6)
+		if image[1] != ['']:
+			f.write(figtext1+str(j)+figtext2+str(j)+figtext3+image[1][0]+figtext4+image[1][1]+figtext5+image[0]+figtext6)
 	f.write('\\end{document}\n')
