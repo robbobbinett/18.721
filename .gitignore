@@ -1,1 +1,4 @@
 images/Wolfram/*.pdf
+credentials.json
+token.json
+quickstart.py
