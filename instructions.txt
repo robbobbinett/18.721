@@ -1,0 +1,7 @@
+1) DO NOT run "./make_tex_file.sh". This command resets "temp.tex" to its default state (i.e. figures added, but without any subsequent edits).
+
+2) I strongly advise you keep all your changes saved to the file "temp.tex".
+
+3) Your build of pdflatex will not compile temp.tex, but mine will. Whenever you want to compile "temp.tex" to get a PDF file, run the command "./artin_ssh.sh" in this directory. You will have to give my Athena password 3 times. After running successfully, the script will leave the file "robinett_temp.pdf" in the directory. Every time "./artin_ssh.sh" is run, the file "robinett_temp.pdf" is reset, so if for some reason you want to keep a certain compiled PDF, save "robinett_temp.pdf" under a new name.
+
+4) Feel free to edit anything in "temp.tex" EXCEPT the paths to the image files. My build of pdflatex should tolerate any grammatical LaTeX command you would like to use, but it cannot tolerate a faulty path name.
