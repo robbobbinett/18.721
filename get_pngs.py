@@ -15,7 +15,7 @@ with open('read_del.txt', 'r') as f:
 	pdfinfo = f.read()
 os.remove('read_del.txt')
 
-from numpy import floor
+from math import floor
 image_size = []
 bash_template = "pdfinfo REPLACE.pdf > read_del.txt"
 for name in image_names:
