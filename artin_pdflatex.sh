@@ -1,3 +1,4 @@
+echo $1 > filename.txt
 rm -f robinett_temp.pdf
 python3 artin_to_robinett.py
 scp temp2.tex rrobinet@athena.dialup.mit.edu:Documents/Github/18.721/temp.tex

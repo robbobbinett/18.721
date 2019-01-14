@@ -2,10 +2,10 @@
 
 2) I strongly advise you keep all your changes saved to the file "temp.tex".
 
-3) Your build of pdflatex will not compile temp.tex, but mine will. Whenever you want to compile "temp.tex" to get a PDF file, run the command "./artin_ssh.sh" in this directory. You will have to give my Athena password 3 times. After running successfully, the script will leave the file "robinett_temp.pdf" in the directory. Every time "./artin_ssh.sh" is run, the file "robinett_temp.pdf" is reset, so if for some reason you want to keep a certain compiled PDF, save "robinett_temp.pdf" under a new name.
+3) Your build of pdflatex will not compile temp.tex, but mine will. Whenever you want to compile "temp.tex" to get a PDF file, run the command "./artin_pdflatex.sh" in this directory. You will have to give my Athena password 3 times. After running successfully, the script will leave the file "robinett_temp.pdf" in the directory. Every time "./artin_pdflatex.sh" is run, the file "robinett_temp.pdf" is reset, so if for some reason you want to keep a certain compiled PDF, save "robinett_temp.pdf" under a new name.
 
-4) Feel free to edit anything in "temp.tex" EXCEPT the paths to the image files. My build of pdflatex should tolerate any grammatical LaTeX command you would like to use, but it cannot tolerate a faulty path name.
+4) Feel free to edit anything in "temp.tex" EXCEPT the paths to the image files. The script I wrote should tolerate any grammatical LaTeX command you would like to use, but it cannot tolerate a faulty path name.
 
-5) If there is a LaTeX error raised while compiling "temp.tex" using "./artin_ssh.sh", it will be read out to you like any other LaTeX error between the second and third times a password is requested. If an error is raised, you may exit the program and return to the shell after reading the error by hitting "Ctrl+C" two or more times (doing it more than twice does not hurt at all).
+5) If there is a LaTeX error raised while compiling "temp.tex" using "./artin_pdflatex.sh", it will be read out to you like any other LaTeX error between the second and third times a password is requested. If an error is raised, you may exit the program and return to the shell after reading the error by hitting "Ctrl+C" two or more times (doing it more than twice will not hurt anything).
 
-6) Don't worry if "./artin_ssh.sh" it takes as long as ten seconds between passwords; this is normal. If it is taking longer, it is almost certainly a LaTeX error, which will be readable on your screen.
+6) Don't worry if "./artin_pdflatex.sh" takes as long as ten seconds between passwords; this is normal. If it is taking longer, it is almost certainly a LaTeX error, which will be readable on your screen.
