@@ -1,2 +1,1 @@
 node cusp tacnode
-proj_comp
