@@ -26,8 +26,8 @@ Export["images/Wolfram/parametrized_cusp.pdf", ContourPlot[eqn[x,y]==0,{x,-1,1},
 Clear[eqn]
 
 (*double_torus*)
-eqn[x_,y_,z_]:=((x^2+y^2)^2-x^2+y^2)^2+15z^2 - 1/100;
-Export["images/Wolfram/double_torus.pdf", ContourPlot3D[eqn[x,y,z]==0, {x,-1.2,1.2}, {y,-1,1}, {z,-0.2,0.2},Mesh->Black,ContourStyle ->Directive[RGBColor[0.8,0.8,0.8]],Axes->False,MaxRecursion->15,BoxStyle->Directive[Opacity[0]],Lighting->{{"Directional", White, {0, 0, 3}}},ImageSize->Large]]
+eqn[x_,y_]:=(y^2+(x-1)^2-1)(y^2+(x+1)^2-1)-0.1;
+Export["images/double_torus/pre_double_torus.pdf", ContourPlot[eqn[x,y]==0,{x,-3,3},{y,-4,4}, ContourStyle->Black, Axes->False, Frame->False]]
 Clear[eqn]
 
 (*ruled_hyperboloid---old*)
