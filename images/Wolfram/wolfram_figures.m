@@ -27,7 +27,7 @@ Clear[eqn]
 
 (*double_torus*)
 eqn[x_,y_,z_]:=((x^2+y^2)^2-x^2+y^2)^2+15z^2 - 1/100;
-Export["images/Wolfram/double_torus.pdf", ContourPlot3D[eqn[x,y,z]==0, {x,-1.2,1.2}, {y,-1,1}, {z,-0.2,0.2},Mesh->None,ContourStyle ->Directive[RGBColor[0.8,0.8,0.8]],Axes->False,MaxRecursion->15,BoxStyle->Directive[Opacity[0]],Lighting->{{"Directional", White, {0, 0, 3}}},ImageSize->Large]]
+Export["images/Wolfram/double_torus.pdf", ContourPlot3D[eqn[x,y,z]==0, {x,-1.2,1.2}, {y,-1,1}, {z,-0.2,0.2},Mesh->Black,ContourStyle ->Directive[RGBColor[0.8,0.8,0.8]],Axes->False,MaxRecursion->15,BoxStyle->Directive[Opacity[0]],Lighting->{{"Directional", White, {0, 0, 3}}},ImageSize->Large]]
 Clear[eqn]
 
 (*ruled_hyperboloid---old*)
@@ -44,5 +44,5 @@ Clear[surf1, surf2]
 
 (*trott_curve_tangents*)
 eqn:=12^2(x^4+y^4)-15^2(x^2+y^2)+350x^2y^2+81;
-Export["images/Wolfram/trott_curve_tangents.pdf", ContourPlot[{eqn\[Equal]0,x+0.445,y-0.708,y==x+1.21},{x,-1,1},{y,-1,1},ContourStyle->{{Black},{Gray,Dashed},{Gray,Dashed},{Gray,Dashed}},ImageSize->200, Frame->False]]
+Export["images/Wolfram/trott_curve_tangents.pdf", ContourPlot[{eqn\[Equal]0,x+0.445,y-0.708,y==x+1.22},{x,-1,1},{y,-1,1},ContourStyle->{{Black},{Gray,Dashed},{Gray,Dashed},{Gray,Dashed}},ImageSize->200, Frame->False]]
 Clear[eqn]
