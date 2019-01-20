@@ -30,19 +30,38 @@ eqn[x_,y_]:=(y^2+(x-1)^2-1)(y^2+(x+1)^2-1)-0.1;
 Export["images/double_torus/pre_double_torus.pdf", ContourPlot[eqn[x,y]==0,{x,-3,3},{y,-4,4}, ContourStyle->Black, Axes->False, Frame->False]]
 Clear[eqn]
 
-(*ruled_hyperboloid---old*)
-surf1[a_,c_][u_,v_]:={a Sqrt[1+u^2]Cos[v],a Sqrt[1+u^2]Sin[v],c u};
-surf2[a_,c_][u_,v_]:={a Sinh[u]Cos[v],a Sinh[u]Sin[v],c u/Sqrt[u^2]Cosh[u]};
-Export["images/Wolfram/ruled_hyperboloid.pdf", GraphicsRow[ParametricPlot3D[#[1,1][u,v],{u,-2,2},{v,0,2\[Pi]},Boxed->False,Axes->False,ColorFunction->Function[{x,y,z},1],PlotStyle->FaceForm[None]]&/@{surf1,surf2},ImageSize->400,Spacings->-50]]
-Clear[surf1, surf2]
-
 (*ruled_hyperboloid*)
-surf1[a_,c_][u_,v_]:={a Sqrt[1+u^2]Cos[v],a Sqrt[1+u^2]Sin[v],c u};
-surf2[a_,c_][u_,v_]:={a Sinh[u]Cos[v],a Sinh[u]Sin[v],c u/Sqrt[u^2]Cosh[u]};
-Export["images/Wolfram/ruled_hyperboloid.pdf", GraphicsRow[ParametricPlot3D[#[1,1][u,v],{u,-2,2},{v,0,2\[Pi]},Boxed->False,Axes->False,ColorFunction->Function[{x,y,z},1],PlotStyle->FaceForm[None]]&/@{surf1,surf2},ImageSize->400,Spacings->-50]]
-Clear[surf1, surf2]
+circle3D[centre_: {0, 0, 0}, radius_: 1, normal_: {0, 0, 1}, angle_: {0, 2 Pi}] :=
+  Composition[
+    Line,
+    Map[RotationTransform[{{0, 0, 1}, normal}, centre], #] &,
+    Map[Append[#, Last@centre] &, #] &,
+    Append[DeleteDuplicates[Most@#], Last@#] &,
+    Level[#, {-2}] &,
+    MeshPrimitives[#, 1] &,
+    DiscretizeRegion,
+    If
+  ][
+    First@Differences@angle >= 2 Pi,
+    Circle[Most@centre, radius],
+    Circle[Most@centre, radius, angle]
+  ]
+p1:=Graphics3D[circle3D[{0,0,-2}]];
+p2:=Graphics3D[circle3D[{0,0,2}]];
+Export["images/Wolfram/ruled_hyperboloid.pdf", Show[p1, p2]]
 
 (*trott_curve_tangents*)
 eqn:=12^2(x^4+y^4)-15^2(x^2+y^2)+350x^2y^2+81;
 Export["images/Wolfram/trott_curve_tangents.pdf", ContourPlot[{eqn\[Equal]0,x+0.445,y-0.708,y==x+1.22},{x,-1,1},{y,-1,1},ContourStyle->{{Black},{Gray,Dashed},{Gray,Dashed},{Gray,Dashed}},ImageSize->200, Frame->False]]
+Clear[eqn]
+
+(*parametrized_node*)
+eqn[x_,y_]:= x^3-(1/2)x^2-x+1/2-y^2-(35-13Sqrt[13])/108;
+Export["images/Wolfram/parametrized_node.pdf", ContourPlot[eqn[x,y]==0,{x,-3,3},{y,-3,3},Axes->False,FrameStyle->White,ImageSize->Full, ContourStyle->{Black}]]
+Clear[eqn]
+
+(*parametrized_tacnode*)
+p1:=ContourPlot[y-x^2==0, {x,-1,1}, {y,-1,1}, Axes->False, FrameStyle->White, ImageSize->Full, ContourStyle->{Black}];
+p2:=ContourPlot[y+x^2==0, {x,-1,1}, {y,-1,1}, Axes->False, FrameStyle->White, ImageSize->Full, ContourStyle->{Black}];
+Export["images/Wolfram/parametrized_tacnode.pdf", Show[p1, p2]]
 Clear[eqn]
