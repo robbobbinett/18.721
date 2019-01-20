@@ -1,3 +1,2 @@
-curve and dual
 node cusp tacnode
 proj_comp
