@@ -46,9 +46,13 @@ circle3D[centre_: {0, 0, 0}, radius_: 1, normal_: {0, 0, 1}, angle_: {0, 2 Pi}] 
     Circle[Most@centre, radius],
     Circle[Most@centre, radius, angle]
   ]
-p1:=Graphics3D[circle3D[{0,0,-2}]];
-p2:=Graphics3D[circle3D[{0,0,2}]];
-Export["images/Wolfram/ruled_hyperboloid.pdf", Show[p1, p2]]
+p1:=Graphics3D[circle3D[{0,0,-2}], FrameStyle->White, Boxed->False];
+p2:=Graphics3D[circle3D[{0,0,2}], FrameStyle->White, Boxed->False];
+num:=24;
+step:=2Pi/num;
+scale:=10;
+p3:=Graphics3D[Line[Table[{{Cos[x],Sin[x],-2}, {Cos[x+scale*step],Sin[x+scale*step],2}}, {x, 0, 2Pi, step}]], Boxed->False];
+Export["images/Wolfram/ruled_hyperboloid.pdf", Show[p1, p2, p3, Boxed->False, ViewPoint->{1.3,-2.4,0}]]
 
 (*trott_curve_tangents*)
 eqn:=12^2(x^4+y^4)-15^2(x^2+y^2)+350x^2y^2+81;
