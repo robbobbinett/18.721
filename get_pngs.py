@@ -1,7 +1,7 @@
 import os
 rootdir = os.getcwd()
 
-verboten = ['Ellipse', 'Plot ge']
+verboten = ['Ellipse', 'Plot ge', 'pre_dou']
 
 image_names = []
 for root, _, files in os.walk(rootdir+'/images'):
