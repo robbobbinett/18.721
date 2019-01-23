@@ -9,6 +9,10 @@ for root, _, files in os.walk(rootdir+'/images'):
 		if file[::-1][0:3][::-1] == 'pdf' and file[0:7] not in verboten:
 			image_names.append(root+'/'+file[:-4])
 
+# image_names.append(rootdir+'/images/Projecting/Projecting')
+# image_names.append(rootdir+'/images/circle tangents/circle-tangents')
+# image_names.append(rootdir+'/images/curve and dual/curve-and-dual')
+
 from subprocess import call
 call('pdfinfo > read_del.txt', shell=True)
 with open('read_del.txt', 'r') as f:
@@ -19,7 +23,10 @@ from math import floor
 image_size = []
 bash_template = "pdfinfo REPLACE.pdf > read_del.txt"
 for name in image_names:
-	bash_command = bash_template.replace('REPLACE', name)
+	if ' ' not in name:
+		bash_command = bash_template.replace('REPLACE', name)
+	else:
+		bash_command = bash_template.replace('REPLACE',"'"+ name+"'")
 	call(bash_command, shell=True)
 	with open("read_del.txt", 'r') as f:
 		text = f.read()
